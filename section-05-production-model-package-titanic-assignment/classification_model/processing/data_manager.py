@@ -22,7 +22,7 @@ def get_first_cabin(row: Any) -> Union[str, float]:
         return np.nan
 
 
-def get_title(passanger: str) -> str:
+def get_title(passenger: str) -> str:
     line = passenger
     if re.search('Mrs', line):
         return 'Mrs'
@@ -84,7 +84,7 @@ def save_pipeline(*, pipeline_to_persist: Pipeline) -> None:
     joblib.dump(pipeline_to_persist, save_path)
 
 
-def load_pipeline(*, file_name: str) -> Pipeline:
+def _load_pipeline(*, file_name: str) -> Pipeline:
     """Load a persisted pipeline."""
 
     file_path = TRAINED_MODEL_DIR / file_name

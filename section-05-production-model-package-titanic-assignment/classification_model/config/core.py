@@ -4,10 +4,10 @@ from typing import Dict, List, Optional, Sequence
 from pydantic import BaseModel
 from strictyaml import YAML, load
 
-import regression_model
+import classification_model
 
 # Project Directories
-PACKAGE_ROOT = Path(regression_model.__file__).resolve().parent
+PACKAGE_ROOT = Path(classification_model.__file__).resolve().parent
 ROOT = PACKAGE_ROOT.parent
 CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yml"
 DATASET_DIR = PACKAGE_ROOT / "datasets"
@@ -20,8 +20,7 @@ class AppConfig(BaseModel):
     """
 
     package_name: str
-    training_data_file: str
-    test_data_file: str
+    raw_data_file: str
     pipeline_save_file: str
 
 
@@ -32,14 +31,14 @@ class ModelConfig(BaseModel):
     """
 
     target: str
+    unused_fields: Sequence[str]
     features: Sequence[str]
     test_size: float
     random_state: int
-    alpha: float
     categorical_vars: Sequence[str]
     numerical_vars: Sequence[str]
-    unused_fields: Sequence[str]
-
+    cabin_vars: Sequence[str]
+    
 
 class Config(BaseModel):
     """Master config object."""

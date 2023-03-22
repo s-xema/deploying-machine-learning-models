@@ -1,7 +1,8 @@
 # Package Overview
-package_name: classification_model
+package_name: regression_model
 
 # Data Files
+raw_data_file: raw.csv
 training_data_file: train.csv
 test_data_file: test.csv
 
@@ -23,16 +24,12 @@ features:
   - embarked
   - title  # generated from name
 
-
 # set train/test split
 test_size: 0.1
 
 # to set the random seed
 random_state: 0
 
-alpha: 0.001
-
-# categorical variables with NA in train set
 categorical_vars:
   - sex
   - cabin
@@ -49,3 +46,6 @@ unused_fields:
   - boat
   - body
   - home.dest
+
+cabin_vars:
+  - cabin
